@@ -1,0 +1,134 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+
+WorldInfo {
+  info [
+    ""
+  ]
+  basicTimeStep 16
+}
+Viewpoint {
+  orientation -0.011848602418526363 0.9977301446021516 0.06628852972345492 0.3545380521927652
+  position -1.4898656426582686 -0.08904867315995989 0.4772656905180363
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+}
+Robot {
+  translation 0 0 0.06
+  children [
+    Solid {
+      children [
+        DEF body Shape {
+          appearance PBRAppearance {
+            baseColor 0.207843 0.517647 0.894118
+            roughness 1
+            metalness 0
+          }
+          geometry DEF bodym Mesh {
+            url [
+              "../model/robot without wheel.obj"
+            ]
+          }
+        }
+      ]
+      boundingObject USE bodym
+    }
+    DEF rightWheel HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor -0.087 0 -0.025
+      }
+      device [
+        RotationalMotor {
+          name "right_wheel"
+        }
+      ]
+      endPoint Solid {
+        translation -0.08702905362873863 -2.4989129960750936e-05 -0.024899356521892534
+        rotation -7.080155292221264e-05 -0.9999999949872331 -7.080023896346371e-05 1.5706809790636969
+        children [
+          DEF wheel Shape {
+            appearance PBRAppearance {
+              baseColor 0.239216 0.219608 0.27451
+              roughness 1
+              metalness 0
+            }
+            geometry DEF wheelm Mesh {
+              url [
+                "../model/Wheel Anu.obj"
+              ]
+            }
+          }
+        ]
+        name "solid(2)"
+        boundingObject USE wheelm
+        physics Physics {
+        }
+      }
+    }
+    DEF leftWheel HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor 0.087 0 -0.025
+      }
+      device [
+        RotationalMotor {
+          name "left_wheel"
+        }
+      ]
+      endPoint Solid {
+        translation 0.08703109618902533 0.0004620960127688726 -0.024983959634787917
+        rotation -0.0001715317574904275 0.9999999705762971 0.00017153501486206696 1.5704586057482341
+        children [
+          DEF wheel Shape {
+            appearance PBRAppearance {
+              baseColor 0.239216 0.219608 0.27451
+              roughness 1
+              metalness 0
+            }
+            geometry Mesh {
+              url [
+                "../model/Wheel Anu.obj"
+              ]
+            }
+          }
+        ]
+        name "solid(3)"
+        boundingObject USE wheelm
+        physics Physics {
+        }
+      }
+    }
+    Accelerometer {
+      children [
+        Shape {
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "accel"
+    }
+  ]
+  boundingObject USE bodym
+  physics Physics {
+  }
+  controller "self_balancing"
+}
+Solid {
+  translation 1 0 0
+  rotation 1 0 0 -0.1308996938995747
+  children [
+    DEF slope Shape {
+      geometry Box {
+        size 0.4 0.5 0.1
+      }
+    }
+  ]
+  boundingObject USE slope
+}
