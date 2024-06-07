@@ -8,11 +8,10 @@ WorldInfo {
   info [
     ""
   ]
-  basicTimeStep 16
 }
 Viewpoint {
-  orientation -0.011848602418526363 0.9977301446021516 0.06628852972345492 0.3545380521927652
-  position -1.4898656426582686 -0.08904867315995989 0.4772656905180363
+  orientation 0.2844474780056679 -0.2334901328408762 -0.929823633880192 4.445447760272781
+  position 0.09107410867365495 -0.4007437305166549 0.2504444384032751
 }
 TexturedBackground {
 }
@@ -118,7 +117,7 @@ Robot {
   boundingObject USE bodym
   physics Physics {
   }
-  controller "self_balancing"
+  controller "self_balancing_signal"
 }
 Solid {
   translation 1 0 0
